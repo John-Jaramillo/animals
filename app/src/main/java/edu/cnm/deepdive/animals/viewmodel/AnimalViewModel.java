@@ -2,11 +2,12 @@ package edu.cnm.deepdive.animals.viewmodel;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
-import android.util.EventLog.Event;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Lifecycle.Event;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.OnLifecycleEvent;
 import edu.cnm.deepdive.animals.model.Animal;
 import edu.cnm.deepdive.animals.service.AnimalService;
 import edu.cnm.deepdive.animals.service.AnimalsRepository;
@@ -60,7 +61,7 @@ public class AnimalViewModel extends AndroidViewModel {
         );
   }
 
-  OnLifecycleEvent(Event.ON_STOP)
+  @OnLifecycleEvent(Event.ON_STOP)
   private void clearPending() {
     pending.clear();
   }
